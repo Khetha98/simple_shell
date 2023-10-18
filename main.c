@@ -9,8 +9,6 @@
  *
  * Return: returns 0 when success,  but 1 when error
  */
-
-
 int main(int ac, char **av)
 {
 	info_t info[] = { INFO_INIT };
@@ -21,6 +19,7 @@ int main(int ac, char **av)
 		: "=r" (fd)
 		: "r" (fd));
 
+	
 	if (ac == 2)
 	{
 		fd = open(av[1], O_RDONLY);
