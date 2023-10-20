@@ -12,7 +12,7 @@
 
 int my_history(info_t *info)
 {
-	print_history_list(info->history);
+	printList(info->history);
 	return (0);
 }
 

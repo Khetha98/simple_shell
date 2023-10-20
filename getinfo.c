@@ -30,13 +30,13 @@ void setupInfo(info_t *info, char **argumentVector)
 	info->program_name = argumentVector[0];
 	if (info->arg)
 	{
-		info->argv = tokenizeString(info->arg, " \t");
+		info->argv = string_split(info->arg, " \t");
 		if (!info->argv)
 		{
 			info->argv = malloc(sizeof(char *) * 2);
 			if (info->argv)
 			{
-				info->argv[0] = duplicateString(info->arg);
+				info->argv[0] = string_duplicate(info->arg);
 				info->argv[1] = NULL;
 			}
 		}
@@ -44,8 +44,8 @@ void setupInfo(info_t *info, char **argumentVector)
 			;
 		info->argc = i;
 
-		replaceAlias(info);
-		replaceVariables(info);
+		replace_alias(info);
+		replace_vars(info);
 	}
 }
 
@@ -58,7 +58,7 @@ void setupInfo(info_t *info, char **argumentVector)
 
 void cleanupInfo(info_t *info, int freeAll)
 {
-	freeStringArray(info->argv);
+	ffree(info->argv);
 	info->argv = NULL;
 	info->path = NULL;
 	if (freeAll)
@@ -71,9 +71,9 @@ void cleanupInfo(info_t *info, int freeAll)
 			freeList(&(info->history));
 		if (info->alias)
 			freeList(&(info->alias));
-		freeStringArray(info->environ);
+		ffree(info->environ);
 		info->environ = NULL;
-		freeBuffer((void **)info->cmd_buf);
+		freeAndNull((void **)info->cmd_buf);
 		if (info->read_fd > 2)
 			close(info->read_fd);
 		_write_error_char(BUFFER_FLUSH);

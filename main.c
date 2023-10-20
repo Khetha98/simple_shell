@@ -33,8 +33,8 @@ int main(int ab, char **ad)
 				_print_error_string(ad[0]);
 				_print_error_string(": 0: Can't open ");
 				_print_error_string(ad[1]);
-				the_print('\n');
-				the_print(BUFFER_FLUSH);
+				_write_error_char('\n');
+				_write_error_char(BUFFER_FLUSH);
 				exit(127);
 			}
 			return (EXIT_FAILURE);

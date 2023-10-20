@@ -16,7 +16,7 @@ int isExecutableCommand(info_t *info, char *path)
 {
 	struct stat st;
 
-	(void)info; // Not used
+	(void)info;
 	if (!path || stat(path, &st))
 		return (0);
 

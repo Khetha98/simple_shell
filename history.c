@@ -18,7 +18,7 @@ char *getHistoryFile(info_t *info)
 	if (!buf)
 		return (NULL);
 	buf[0] = 0;
-	_strcpy(buf, homeDir);
+	string_copy(buf, homeDir);
 	string_concatenate(buf, "/");
 	string_concatenate(buf, HIST_FILE);
 	return (buf);
@@ -46,10 +46,10 @@ int writeHistory(info_t *info)
 		return (-1);
 	for (node = info->history; node; node = node->next)
 	{
-		print_stringfd(node->str, fd);
-		_putfd('\n', fd);
+		_print_to_fd(node->str, fd);
+		_write_to_fd('\n', fd);
 	}
-	_putfd(BUFFER_FLUSH, fd);
+	_write_to_fd(BUFFER_FLUSH, fd);
 	close(fd);
 	return (1);
 }
@@ -119,7 +119,7 @@ int buildHistoryList(info_t *info, char *buf, int lineCount)
 
 	if (info->history)
 		node = info->history;
-	addNodeEnd(&node, buf, lineCount);
+	addNode_end(&node, buf, lineCount);
 
 	if (!info->history)
 		info->history = node;

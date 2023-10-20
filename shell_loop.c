@@ -96,7 +96,7 @@ void find_command(info_t *info)
 		info->line_count_flag = 0;
 	}
 	for (i = 0, k = 0; info->arg[i]; i++)
-		if (!is_character_delimiteriter(info->arg[i], " \t\n"))
+		if (!is_character_delimiter(info->arg[i], " \t\n"))
 			k++;
 	if (!k)
 		return;
@@ -110,12 +110,12 @@ void find_command(info_t *info)
 	else
 	{
 		if ((is_shell_interactive(info) || get_environment_variable(info, "PATH=")
-			|| info->argv[0][0] == '/') && is_command(info, info->argv[0]))
+			|| info->argv[0][0] == '/') && isExecutableCommand(info, info->argv[0]))
 			fork_command(info);
 		else if (*(info->arg) != '\n')
 		{
 			info->status = 127;
-			print_error(info, "not found\n");
+			print_error_message(info, "not found\n");
 		}
 	}
 }
@@ -154,7 +154,7 @@ void fork_command(info_t *info)
 		{
 			info->status = WEXITSTATUS(info->status);
 			if (info->status == 126)
-				print_error(info, "Permission denied\n");
+				print_error_message(info, "Permission denied\n");
 		}
 	}
 }

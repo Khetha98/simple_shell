@@ -61,16 +61,16 @@ void print_error_message(info_t *info, char *error_string)
 
 int print_decimal(int input, int fd)
 {
-	int (*print_char)(char) = _write_to_fd;
+	int (*__write_error_char)(char) = write_character;
 	int i, count = 0;
 	unsigned int absolute_value, current;
 
 	if (fd == STDERR_FILENO)
-		print_char = _write_error_char;
+		__write_error_char = _write_error_char;
 	if (input < 0)
 	{
 		absolute_value = -input;
-		print_char('-');
+		__write_error_char('-');
 		count++;
 	}
 	else
@@ -80,12 +80,12 @@ int print_decimal(int input, int fd)
 	{
 		if (absolute_value / i)
 		{
-			print_char('0' + current / i);
+			__write_error_char('0' + current / i);
 			count++;
 		}
 		current %= i;
 	}
-	print_char('0' + current);
+	__write_error_char('0' + current);
 	count++;
 
 	return (count);
@@ -128,6 +128,7 @@ char *convert_to_string(long int num, int base, int flags)
 		*--ptr = sign;
 	return (ptr);
 }
+
 
 /**
  * remove_first_comment - Replaces the first instance of '#' with '\0' in the string.

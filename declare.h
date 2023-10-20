@@ -144,7 +144,7 @@ int _print_to_fd(char *str, int fd);
 /* loopshell_loop.c */
 int loopshell_loop(char **);
 
-/* toi.c */
+/* toem_atoi.c */
 int is_shell_interactive(info_t *);
 int is_character_delimiter(char, char *);
 int is_alphabetic(int);
@@ -158,10 +158,10 @@ char *findCommandInPath(info_t *, char *, char *);
 
 /* toem_errors1.c */
 int print_decimal(int, int);
-char *convert_number(long int, int, int);
-void remove_comments(char *);
+char *convert_to_string(long int, int, int);
+void remove_first_comment(char *);
 int _erratoi(char *);
-void print_error(info_t *, char *);
+void print_error_message(info_t *, char *);
 
 
 
@@ -239,7 +239,7 @@ char **string_split2(char *, char);
 char *string_copy(char *, char *);
 char *string_duplicate(const char *);
 void print_string(char *);
-int _write_error_char(char);
+int write_character(char);
 
 
 /* toem_vars.c */
@@ -259,9 +259,9 @@ ssize_t getNodeIndex(list_t *, list_t *);
 /* toem_lists.c */
 list_t *addNode(list_t **, const char *, int);
 list_t *addNode_end(list_t **, const char *, int);
-printListStr(const list_t *);
+size_t printListStr(const list_t *);
 int deleteNodeAtIndex(list_t **, unsigned int);
-void freeListt(list_t **);
+void freeList(list_t **);
 
 
 

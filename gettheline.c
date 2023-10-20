@@ -30,8 +30,12 @@ ssize_t input_buffer(info_t *info, char **buffer, size_t *buffer_length)
 				read_bytes--;
 			}
 			info->line_count_flag = 1;
-			remove_comments(*buffer);
+			remove_first_comment(*buffer);
 			buildHistoryList(info, *buffer, info->histCount++);
+			{
+				*buffer_length = read_bytes;
+				info->cmd_buf = buffer;
+			}
 		}
 	}
 	return read_bytes;

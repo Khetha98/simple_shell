@@ -120,12 +120,12 @@ int replace_vars(info_t *info)
 
         if (!str_compare(info->argv[i], "$?"))
         {
-            replace_string(&(info->argv[i]), string_duplicate(convert_number(info->status, 10, 0)));
+            replace_string(&(info->argv[i]), string_duplicate(convert_to_string(info->status, 10, 0)));
             continue;
         }
         if (!str_compare(info->argv[i], "$$"))
         {
-            replace_string(&(info->argv[i]), string_duplicate(convert_number(getpid(), 10, 0)));
+            replace_string(&(info->argv[i]), string_duplicate(convert_to_string(getpid(), 10, 0)));
             continue;
         }
         node = nodeStartsWith(info->env, &info->argv[i][1], '=');

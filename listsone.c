@@ -67,7 +67,7 @@ size_t printList(const list_t *h)
 
 	while (h)
 	{
-		print_string(convertNumber(h->num, 10, 0));
+		print_string(convert_to_string(h->num, 10, 0));
 		_write_error_char(':');
 		_write_error_char(' ');
 		print_string(h->str ? h->str : "(nil)");
@@ -93,7 +93,7 @@ list_t *nodeStartsWith(list_t *node, char *prefix, char c)
 
 	while (node)
 	{
-		p = startsWith(node->str, prefix);
+		p = string_starts_with(node->str, prefix);
 		if (p && ((c == -1) || (*p == c)))
 			return (node);
 		node = node->next;

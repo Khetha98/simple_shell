@@ -37,7 +37,7 @@ list_t *addNode(list_t **head, const char *str, int num)
 
 
 /**
- * addNodeEnd - Add a new node to the end of the list.
+ * addNode_end - Add a new node to the end of the list.
  *
  * @head: A pointer to the address of the head node.
  * @str: The string to be stored in the new node.
@@ -45,7 +45,7 @@ list_t *addNode(list_t **head, const char *str, int num)
  * Return: A pointer to the newly created node.
  */
 
-list_t *addNodeEnd(list_t **head, const char *str, int num)
+list_t *addNode_end(list_t **head, const char *str, int num)
 {
 	list_t *newNode, *node;
 
