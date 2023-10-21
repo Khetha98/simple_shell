@@ -26,7 +26,7 @@ int my_exit(info_t *info)
 			return (1);
 		}
 
-		info->error_code = exit_status;
+		info->error_code = string_to_integer(info->argv[1]);
 		return (-2);
 	}
 

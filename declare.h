@@ -13,7 +13,7 @@
 #include <limits.h>
 #include <fcntl.h>
 #include <errno.h>
-#include <signal.h>
+
 
 
 
@@ -98,7 +98,6 @@ typedef struct passinfo
     char **environ;
     int env_changed;
     int status;
-
     char **cmd_buf;
     int cmd_buf_type;
     int read_fd;
@@ -131,6 +130,8 @@ typedef struct builtin
 
 
 
+
+
 /* toem_errors.c */
 void _print_error_string(char *);
 int _write_error_char(char);
@@ -160,7 +161,7 @@ char *findCommandInPath(info_t *, char *, char *);
 int print_decimal(int, int);
 char *convert_to_string(long int, int, int);
 void remove_first_comment(char *);
-int _erratoi(char *);
+int str_to_int(char *);
 void print_error_message(info_t *, char *);
 
 

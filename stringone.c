@@ -22,7 +22,7 @@ char *string_copy(char *destination, char *source)
         i++;
     }
 
-    destination[i] = '\0';
+    destination[i] = 0;
 
     return destination;
 }

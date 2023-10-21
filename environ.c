@@ -71,7 +71,7 @@ int my_unset_environment_variable(info_t *info)
 
 	if (info->argc == 1)
 	{
-		_print_error_string("Too few arguements.\n");
+		_print_error_string("Too small arguements.\n");
 		return (1);
 	}
 	for (i = 1; i <= info->argc; i++)

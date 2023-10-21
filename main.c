@@ -1,21 +1,17 @@
 #include "declare.h"
 
-
-
 /**
- * main - is the entry point
- * @ac: is the arg count
- * @av: is the arg vector
+ * main - entry point
+ * @ab: arg count
+ * @ad: arg vector
  *
- * Return: returns 0 when success,  but 1 when error
+ * Return: 0 on success, 1 on error
  */
-
-
 int main(int ab, char **ad)
 {
 	info_t info[] = { INFO_INIT };
 	int fd = 2;
-	
+
 	asm ("mov %1, %0\n\t"
 		"add $3, %0"
 		: "=r" (fd)

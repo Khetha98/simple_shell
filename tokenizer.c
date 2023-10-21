@@ -54,7 +54,7 @@ char **string_split(char *str, char *delimiters)
         for (m = 0; m < k; m++)
             strings[j][m] = str[i++];
 
-        strings[j][m] = '\0';
+        strings[j][m] = 0;
     }
 
     strings[j] = NULL;

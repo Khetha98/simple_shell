@@ -93,9 +93,9 @@ int print_custom_alias(list_t *alias_node)
 }
 
 /**
- * my_alias - Mimics the alias built-in (man alias).
+ * my_alias - similar to the alias built-in (man alias).
  *
- * @info: Structure containing potential arguments. Used to maintain
+ * @info: Structure containing potential arguments. Used in maintaining
  *        a consistent function prototype.
  *
  * Return: Always 0.

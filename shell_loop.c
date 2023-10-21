@@ -28,7 +28,7 @@ int shell_loop(info_t *info, char **av)
 				find_command(info);
 		}
 		else if (is_shell_interactive(info))
-			_write_error_char('\n');
+			write_character('\n');
 		cleanupInfo(info, 0);
 	}
 	writeHistory(info);
