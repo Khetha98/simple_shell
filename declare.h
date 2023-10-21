@@ -70,7 +70,8 @@ typedef struct liststr
  * @linecount_flag: Flag indicating whether to count this line of input.
  * @program_name: The program filename.
  * @env: A linked list that is a local copy of the 'environ' variable.
- * @environ: A custom modified copy of the 'environ' variable from the linked list 'env'.
+ * @environ: A custom modified copy of the 'environ' variable from the
+ * linked list 'env'.
  * @history: A node representing command history.
  * @alias: A node representing aliases.
  * @env_changed: Flag indicating if 'environ' was changed.
@@ -84,24 +85,26 @@ typedef struct liststr
 
 typedef struct passinfo
 {
-    char *arg;
-    char **argv;
-    char *path;
-    int argc;
-    unsigned int line_count;
-    int error_code;
-    int line_count_flag;
-    char *program_name;
-    list_t *env;
-    list_t *history;
-    list_t *alias;
-    char **environ;
-    int env_changed;
-    int status;
-    char **cmd_buf;
-    int cmd_buf_type;
-    int read_fd;
-    int histCount;
+
+char *arg;
+char **argv;
+char *path;
+int argc;
+unsigned int line_count;
+int error_code;
+int line_count_flag;
+char *program_name;
+list_t *env;
+list_t *history;
+list_t *alias;
+char **environ;
+int env_changed;
+int status;
+char **cmd_buf;
+int cmd_buf_type;
+int read_fd;
+int histCount;
+
 } info_t;
 
 
@@ -141,23 +144,19 @@ int _print_to_fd(char *str, int fd);
 
 
 
-
-/* loopshell_loop.c */
 int loopshell_loop(char **);
 
-/* toem_atoi.c */
+
 int is_shell_interactive(info_t *);
 int is_character_delimiter(char, char *);
 int is_alphabetic(int);
 int string_to_integer(char *);
 
-
-/* toem_parser.c */
 int isExecutableCommand(info_t *, char *);
 char *duplicateSubstring(char *, int, int);
 char *findCommandInPath(info_t *, char *, char *);
 
-/* toem_errors1.c */
+
 int print_decimal(int, int);
 char *convert_to_string(long int, int, int);
 void remove_first_comment(char *);
@@ -166,98 +165,94 @@ void print_error_message(info_t *, char *);
 
 
 
-/* toem_shloop.c */
 int shell_loop(info_t *, char **);
 int find_builtin(info_t *);
 void find_command(info_t *);
 void fork_command(info_t *);
 
-/* toem_memory.c */
+
 int freeAndNull(void **);
 
-/* toem_getenv.c */
+
 char **get_environment(info_t *);
 int unset_environment_variable(info_t *, char *);
 int set_environment_variable(info_t *, char *, char *);
 
-/* toem_exits.c */
+
 char *my_strncpy(char *, char *, int);
 char *my_strncat(char *, char *, int);
 char *my_strchr(char *, char);
 
-/*toem_getline.c */
+
 ssize_t get_input(info_t *);
 int _getline(info_t *, char **, size_t *);
 void signal_handler(int);
 
-/* toem_getinfo.c */
+
 void initialize_info(info_t *);
 void setupInfo(info_t *, char **);
 void cleanupInfo(info_t *, int);
 
 
-/* toem_history.c */
+
 char *getHistoryFile(info_t *info);
 int writeHistory(info_t *info);
 int readHistory(info_t *info);
 int buildHistoryList(info_t *info, char *buf, int linecount);
 int renumberHistory(info_t *info);
 
-/* toem_environ.c */
+
 char *get_environment_variable(info_t *, const char *);
 int my_environment(info_t *);
 int my_set_environment_variable(info_t *);
 int my_unset_environment_variable(info_t *);
 int populate_environment_list(info_t *);
 
-/* toem_builtin.c */
+
 int my_exit(info_t *);
 int my_cd(info_t *);
 int my_help(info_t *);
 
-/* toem_realloc.c */
+
 void ffree(char **);
 void *_realloc(void *, unsigned int, unsigned int);
 char *_memset(char *, char, unsigned int);
 
 
-/* toem_string.c */
 int str_length(char *);
 int str_compare(char *, char *);
 char *string_starts_with(const char *, const char *);
 char *string_concatenate(char *, char *);
 
-/* toem_builtin1.c */
+
 int my_history(info_t *);
 int my_alias(info_t *);
 
 
-/* toem_tokenizer.c */
 char **string_split(char *, char *);
 char **string_split2(char *, char);
 
-/* toem_string1.c */
+
 char *string_copy(char *, char *);
 char *string_duplicate(const char *);
 void print_string(char *);
 int write_character(char);
 
 
-/* toem_vars.c */
 int is_chain_delimiter(info_t *, char *, size_t *);
 void check_chain_continuation(info_t *, char *, size_t *, size_t, size_t);
 int replace_alias(info_t *);
 int replace_vars(info_t *);
 int replace_string(char **, char *);
 
-/* toem_lists1.c */
+
 size_t listLength(const list_t *);
 char **listToStrings(list_t *);
 size_t printList(const list_t *);
 list_t *nodeStartsWith(list_t *, char *, char);
 ssize_t getNodeIndex(list_t *, list_t *);
 
-/* toem_lists.c */
+
 list_t *addNode(list_t **, const char *, int);
 list_t *addNode_end(list_t **, const char *, int);
 size_t printListStr(const list_t *);
@@ -265,6 +260,5 @@ int deleteNodeAtIndex(list_t **, unsigned int);
 void freeList(list_t **);
 
 
-
-#endif 
+#endif
 

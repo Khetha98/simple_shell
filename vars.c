@@ -37,7 +37,8 @@ int is_chain_delimiter(info_t *info, char *buf, size_t *p)
 }
 
 /**
- * check_chain_continuation - checks if we should continue chaining based on the last status
+ * check_chain_continuation - checks if we should continue
+ * chaining based on the last status
  * @info: the parameter struct
  * @buf: the character buffer
  * @p: address of the current position in buf
