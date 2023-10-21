@@ -25,9 +25,9 @@ int is_chain_delimiter(info_t *info, char *buf, size_t *p)
         j++;
         info->cmd_buf_type = CMD_AND;
     }
-    else if (buf[j] == ';') /* found the end of this command */
+    else if (buf[j] == ';')
     {
-        buf[j] = 0; /* replace semicolon with null */
+        buf[j] = 0;
         info->cmd_buf_type = CMD_CHAIN;
     }
     else
@@ -137,7 +137,7 @@ int replace_vars(info_t *info)
         }
         replace_string(&info->argv[i], string_duplicate(""));
     }
-    return 0;
+    return (0);
 }
 
 /**
@@ -150,8 +150,8 @@ int replace_vars(info_t *info)
 
 int replace_string(char **old, char *new)
 {
-    free(*old);
-    
-    *old = new;
-    return 1;
+free(*old);
+
+*old = new;
+return (1);
 }

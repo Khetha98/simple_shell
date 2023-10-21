@@ -1,9 +1,11 @@
 #include "declare.h"
 
 /**
- * get_environment - Returns a copy of the environment variables as a string array.
+ * get_environment - Returns a copy of the
+ *  environment variables as a string array.
  *
- * @info: Structure containing potential arguments. Used to maintain constant function prototype.
+ * @info: Structure containing potential arguments
+ *  used to maintain constant function prototype.
  *
  * Return: The string array representing the environment.
  */
@@ -23,7 +25,8 @@ char **get_environment(info_t *info)
 /**
  * unset_environment_variable - Remove an environment variable.
  *
- * @info: Structure containing potential arguments. Used to maintain constant function prototype.
+ * @info: Structure containing potential arguments
+ *  used to maintain constant function prototype.
  * @variable: The environment variable to remove.
  *
  * Return: 1 on successful removal, 0 otherwise.
@@ -55,9 +58,11 @@ int unset_environment_variable(info_t *info, char *variable)
 }
 
 /**
- * set_environment_variable - Initializes a new environment variable or modifies an existing one.
+ * set_environment_variable - Initializes a
+ *  new environment variable or modifies an existing one.
  *
- * @info: Structure containing potential arguments. Used to maintain constant function prototype.
+ * @info: Structure containing potential
+ *  arguments. Used to maintain constant function prototype.
  * @variable: The environment variable property.
  * @value: The environment variable value.
  *
